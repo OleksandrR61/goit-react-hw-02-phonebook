@@ -18,6 +18,10 @@ export class Form extends Component {
 
         this.props.onSubmit(this.state);
 
+        this.setState({
+            name: '',
+        })
+
         event.target.reset();
     }
 
