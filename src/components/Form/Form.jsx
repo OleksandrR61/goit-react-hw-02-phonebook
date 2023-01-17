@@ -9,18 +9,20 @@ export class Form extends Component {
 
     render() {
         return (
-            <form>
-                <label htmlFor="name">Name</label>
+            <form className={styles.form}>
+                <label htmlFor="name" className={styles.label}>Name</label>
 
                 <input
                     type="text"
+                    id="name"
                     name="name"
                     pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                     title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                     required
+                    className={styles.input}
                 />
 
-                <button type="submit">Add contact</button>
+                <button type="submit" className={styles.button}>Add contact</button>
             </form>
         );
     };
