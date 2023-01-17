@@ -9,7 +9,7 @@ export class Form extends Component {
 
     render() {
         return (
-            <form className={styles.form}>
+            <form className={styles.form} onSubmit={this.props.onSubmit}>
                 <label htmlFor="name" className={styles.label}>Name</label>
 
                 <input
