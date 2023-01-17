@@ -14,7 +14,7 @@ export class Phonebook extends Component {
         this.setState((prevState) => {
             return {
                 contacts: [...prevState.contacts, {
-                    name: newContact.name,
+                    ...newContact,
                     id: nanoid(),
                 }],
             };

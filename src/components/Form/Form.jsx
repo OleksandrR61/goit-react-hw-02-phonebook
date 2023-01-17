@@ -2,10 +2,13 @@ import { Component } from "react";
 
 import styles from "./Form.module.css"
 
+const STATE_INIT = {
+    name: '',
+    number: '',
+};
+
 export class Form extends Component {
-    state = {
-        name: '',
-    };
+    state = STATE_INIT;
 
     handleChange = ({target}) => {
         this.setState({
@@ -18,17 +21,11 @@ export class Form extends Component {
 
         this.props.onSubmit(this.state);
 
-        this.setState({
-            name: '',
-        })
-
         this.handleFormReset(event.target);
     }
 
     handleFormReset = (form) => {
-        this.setState({
-            name: '',
-        });
+        this.setState(STATE_INIT);
         
         form.elements.submit.blur();
     }
@@ -48,6 +45,20 @@ export class Form extends Component {
                     className={styles.input}
                     onChange={this.handleChange}
                     value={this.state.name}
+                />
+
+                <label htmlFor="number" className={styles.label}>Number</label>
+
+                <input
+                    type="tel"
+                    id="number"
+                    name="number"
+                    pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+                    title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+                    required
+                    className={styles.input}
+                    onChange={this.handleChange}
+                    value={this.state.number}
                 />
 
                 <button type="submit" name="submit" className={styles.button}>Add contact</button>

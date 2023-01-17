@@ -1,10 +1,11 @@
-import { Notification } from "components/Notification/Notification"
+import { ContactElement } from "components/ContactElement/ContactElement";
+import { Notification } from "components/Notification/Notification";
 
 export const Contacts = ({contacts}) => (
         contacts.length
             ?   
                 <ul>
-                    {contacts.map(contact => <li key={contact.id}>{contact.name}</li>)}
+                    {contacts.map(contact => <ContactElement key={contact.id} contact={contact} />)}
                 </ul>
             : <Notification message="Add your first contact please"/>
     )
