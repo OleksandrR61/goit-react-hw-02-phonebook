@@ -7,9 +7,23 @@ export class Form extends Component {
         name: '',
     };
 
+    handleChange = ({target}) => {
+        this.setState({
+            [target.name]: target.value,
+        });
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+
+        this.props.onSubmit(this.state);
+
+        event.target.reset();
+    }
+
     render() {
         return (
-            <form className={styles.form} onSubmit={this.props.onSubmit}>
+            <form className={styles.form} onSubmit={this.handleSubmit}>
                 <label htmlFor="name" className={styles.label}>Name</label>
 
                 <input
@@ -20,6 +34,8 @@ export class Form extends Component {
                     title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                     required
                     className={styles.input}
+                    onChange={this.handleChange}
+                    value={this.state.name}
                 />
 
                 <button type="submit" className={styles.button}>Add contact</button>

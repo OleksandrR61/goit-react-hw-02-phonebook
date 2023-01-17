@@ -10,23 +10,18 @@ export class Phonebook extends Component {
         contacts: [],
     };
 
-    handleAddContacts = (event) => {
-        event.preventDefault();
-
-        console.log(event.target.name.value);
-
+    handleAddContacts = (newContact) => {
         this.setState((prevState) => {
             return {
-                contacts: prevState.contacts.push({
-                    name: event.target.name.value,
+                contacts: [...prevState.contacts, {
+                    name: newContact.name,
                     id: nanoid(),
-                })
+                }],
             };
         });
     };
 
     render() {
-        console.log(this.state);
         return (
         <>
             <Section title="Phonebook">
@@ -34,7 +29,7 @@ export class Phonebook extends Component {
             </Section>
 
             <Section title="Contacts">
-                <Contacts />
+                <Contacts contacts={this.state.contacts}/>
             </Section>
         </>
         );
