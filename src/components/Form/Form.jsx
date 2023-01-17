@@ -22,7 +22,15 @@ export class Form extends Component {
             name: '',
         })
 
-        event.target.reset();
+        this.handleFormReset(event.target);
+    }
+
+    handleFormReset = (form) => {
+        this.setState({
+            name: '',
+        });
+        
+        form.elements.submit.blur();
     }
 
     render() {
@@ -42,7 +50,7 @@ export class Form extends Component {
                     value={this.state.name}
                 />
 
-                <button type="submit" className={styles.button}>Add contact</button>
+                <button type="submit" name="submit" className={styles.button}>Add contact</button>
             </form>
         );
     };
