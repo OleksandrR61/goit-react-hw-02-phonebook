@@ -29,7 +29,7 @@ export const ContacList = ({contacts, filter}) => {
     )
 };
 
-Notification.propTypes = {
+ContacList.propTypes = {
     filter: PropTypes.string.isRequired,
     contacts: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string.isRequired,

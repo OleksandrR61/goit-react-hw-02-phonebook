@@ -12,14 +12,20 @@ export class Phonebook extends Component {
     };
 
     handleAddContacts = (newContact) => {
-        this.setState((prevState) => {
-            return {
-                contacts: [...prevState.contacts, {
-                    ...newContact,
-                    id: nanoid(),
-                }],
-            };
-        });
+        let isNew = true;
+        this.state.contacts.map(contact => {if (contact.name === newContact.name) {isNew = false}});
+        if (isNew) {
+            this.setState((prevState) => {
+                return {
+                    contacts: [...prevState.contacts, {
+                        ...newContact,
+                        id: nanoid(),
+                    }],
+                };
+            });
+        } else {
+            alert(`${newContact.name} is already in contacts.`);
+        };
     };
 
     handleSetFilter = ({target}) => {
