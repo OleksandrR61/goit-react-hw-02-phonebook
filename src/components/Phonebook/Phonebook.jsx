@@ -12,8 +12,7 @@ export class Phonebook extends Component {
     };
 
     handleAddContacts = (newContact) => {
-        let isNew = true;
-        this.state.contacts.map(contact => {if (contact.name === newContact.name) {isNew = false}});
+        const isNew = this.state.contacts.every(contact => contact.name !== newContact.name);
         if (isNew) {
             this.setState((prevState) => {
                 return {
@@ -36,7 +35,7 @@ export class Phonebook extends Component {
 
     handleDelete = ({target}) => {
         this.setState((prevState) => ({
-            contacts: prevState.contacts.filter(contact => contact.id != target.id),
+            contacts: prevState.contacts.filter(contact => contact.id !== target.id),
         }));
     }
 
