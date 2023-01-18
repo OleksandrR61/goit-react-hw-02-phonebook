@@ -1,13 +1,14 @@
 import { Component } from "react";
+import PropTypes from 'prop-types';
 
-import styles from "./Form.module.css"
+import styles from "./ContactForm.module.css"
 
 const STATE_INIT = {
     name: '',
     number: '',
 };
 
-export class Form extends Component {
+export class ContactForm extends Component {
     state = STATE_INIT;
 
     handleChange = ({target}) => {
@@ -65,4 +66,8 @@ export class Form extends Component {
             </form>
         );
     };
+};
+
+ContactForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
 }
