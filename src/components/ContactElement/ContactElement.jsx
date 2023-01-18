@@ -1,13 +1,16 @@
 import PropTypes from 'prop-types';
 
-export const ContactElement = ({contact}) => (
-    <li>{contact.name}: {contact.number}</li>
-)
+import styles from './ContactElement.module.css';
+
+export const ContactElement = ({contact, onHandleDelete}) => (
+    <li>{contact.name}: {contact.number} <button type="button" className={styles.button} onClick={onHandleDelete} id={contact.id}>Delete</button></li>
+);
 
 ContactElement.propTypes = {
     contact: PropTypes.shape({
         name: PropTypes.string.isRequired,
         number: PropTypes.string.isRequired,
         id: PropTypes.string.isRequired,
-    }).isRequired
-}
+    }).isRequired,
+    onHandleDelete: PropTypes.func.isRequired,
+};

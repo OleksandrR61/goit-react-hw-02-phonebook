@@ -34,6 +34,12 @@ export class Phonebook extends Component {
         });
     };
 
+    handleDelete = ({target}) => {
+        this.setState((prevState) => ({
+            contacts: prevState.contacts.filter(contact => contact.id != target.id),
+        }));
+    }
+
     render() {
         return (
         <>
@@ -42,7 +48,7 @@ export class Phonebook extends Component {
 
             <h2>Contacts</h2>
             <Filter onChange={this.handleSetFilter} value={this.state.filter}/>
-            <ContacList contacts={this.state.contacts} filter={this.state.filter}/>
+            <ContacList contacts={this.state.contacts} filter={this.state.filter} onHandleDelete={this.handleDelete}/>
         </>
         );
     }
