@@ -31,5 +31,9 @@ export const ContacList = ({contacts, filter}) => {
 
 Notification.propTypes = {
     filter: PropTypes.string.isRequired,
-    contacts: PropTypes.arrayOf()
+    contacts: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        number: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+    })).isRequired
 }
