@@ -21,7 +21,7 @@ export const ContacList = ({contacts, filter, onHandleDelete}) => {
                 <>
                     <ul>
                         {contactsForRender.map(contact =>
-                            <ContactElement key={contact.id} contact={contact} onHandleDelete={onHandleDelete} />
+                            <li key={contact.id}><ContactElement contact={contact} onHandleDelete={onHandleDelete} /></li>
                         )}
                     </ul>
                 </>

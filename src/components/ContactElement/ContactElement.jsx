@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './ContactElement.module.css';
 
 export const ContactElement = ({contact, onHandleDelete}) => (
-    <li>{contact.name}: {contact.number} <button type="button" className={styles.button} onClick={onHandleDelete} id={contact.id}>Delete</button></li>
+    <>{contact.name}: {contact.number} <button type="button" className={styles.button} onClick={onHandleDelete} id={contact.id}>Delete</button></>
 );
 
 ContactElement.propTypes = {
